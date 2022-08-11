@@ -1,0 +1,4 @@
+C:\Coding Projects\DeckBuilder\Deck Builder\Deck Builder\x64\Debug\Deck Builder.vcxproj.AssemblyReference.cache
+C:\Coding Projects\DeckBuilder\Deck Builder\Deck Builder\x64\Debug\Deck Builder.vcxproj.SuggestedBindingRedirects.cache
+C:\Coding Projects\DeckBuilder\Deck Builder\Deck Builder\x64\Debug\DeckBuilder.MyForm.resources
+C:\Coding Projects\DeckBuilder\Deck Builder\Deck Builder\x64\Debug\Deck Builder.vcxproj.GenerateResource.cache
