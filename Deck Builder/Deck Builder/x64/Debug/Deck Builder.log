@@ -1,9 +1,10 @@
-﻿  deck.cpp
+﻿  card.cpp
+  deck.cpp
   MyForm.cpp
+C:\Coding Projects\DeckBuilder\Deck Builder\Deck Builder\MyForm.h(336,14): warning C4834: discarding return value of function with 'nodiscard' attribute
 C:\Coding Projects\DeckBuilder\Deck Builder\Deck Builder\MyForm.cpp(11,1): warning C4829: Possibly incorrect parameters to function main. Consider 'int main(Platform::Array<Platform::String^>^ argv)'
-  card.cpp
   stringConverter.cpp
   .NETFramework,Version=v4.7.2.AssemblyAttributes.cpp
   Generating Code...
-  deck.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
+  card.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
   Deck Builder.vcxproj -> C:\Coding Projects\DeckBuilder\Deck Builder\x64\Debug\Deck Builder.exe

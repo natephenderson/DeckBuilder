@@ -5,6 +5,8 @@
 #include <iostream>
 
 
-void MarshalString(System::String^ s, std::string& os);
+void systemToStd(System::String^ s, std::string& os);
 
-void MarshalString(System::String^ s, std::wstring& os);
+void systemToStd(System::String^ s, std::wstring& os);
+
+void stdToSystem(System::String^ s, std::string& os);

@@ -13,12 +13,14 @@ class Deck {
 		Card cards[max_deck_size];
 		int qty;
 
+	public:
 		// constructor
 		Deck();
 
 		// deck methods
 		void setTitle(std::string x);
-		void addCard(Card& newCard);
+		void addCard(Card* newCard);
 		void deleteCard();
+		std::string getTitle(std::string x);
 		Card getCard(int index);
 };

@@ -3,7 +3,7 @@
 using namespace std;
 using namespace System;
 
-void MarshalString(String^ s, string& os) {
+void systemToStd(String^ s, string& os) {
     using namespace Runtime::InteropServices;
     const char* chars =
         (const char*)(Marshal::StringToHGlobalAnsi(s)).ToPointer();
@@ -11,10 +11,14 @@ void MarshalString(String^ s, string& os) {
     Marshal::FreeHGlobal(IntPtr((void*)chars));
 }
 
-void MarshalString(String^ s, wstring& os) {
+void systemToStd(String^ s, wstring& os) {
     using namespace Runtime::InteropServices;
     const wchar_t* chars =
         (const wchar_t*)(Marshal::StringToHGlobalUni(s)).ToPointer();
     os = chars;
     Marshal::FreeHGlobal(IntPtr((void*)chars));
+}
+
+void stdToSystem(String^ s, string& os) {
+    s = gcnew String(os.c_str());
 }

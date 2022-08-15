@@ -7,13 +7,14 @@ static const int card_height = 585;
 
 
 class Card {
-	public:
+	private:
 		// card properties
 		std::string title;
 		std::string description;
 		bool isAbility;
 		int powerRating;
 
+	public:
 		// constructors
 		Card();
 		Card(std::string myTitle, std::string myDescription, bool ability);					// for ability cards
