@@ -2,6 +2,7 @@
 #include "deck.h"
 #include "card.h"
 #include "stringConverter.h"
+#include "msclr\marshal_cppstd.h"
 
 namespace DeckBuilder {
 
@@ -42,7 +43,7 @@ namespace DeckBuilder {
 		protected:
 
 
-		private: System::Windows::Forms::TextBox^ powerRatingBox;
+
 
 
 		private: System::Windows::Forms::Label^ cardLabel;
@@ -65,7 +66,8 @@ namespace DeckBuilder {
 
 		private: System::Windows::Forms::CheckBox^ checkBox1;
 		private: System::Windows::Forms::TextBox^ deckName;
-		private: System::Windows::Forms::Button^ deleteDeck;
+
+
 
 
 
@@ -76,6 +78,17 @@ namespace DeckBuilder {
 		private: System::Windows::Forms::Label^ deckLabel;
 
 		private: System::Windows::Forms::Label^ label4;
+		private: System::Windows::Forms::Button^ deleteCard;
+		private: System::Windows::Forms::Button^ deleteDeck;
+		private: System::Windows::Forms::Label^ quantityLabel;
+		private: System::Windows::Forms::TextBox^ quantityBox;
+		private: System::Windows::Forms::TextBox^ powerRatingBox;
+
+
+
+
+
+
 
 
 
@@ -104,7 +117,6 @@ namespace DeckBuilder {
 		{
 			this->cardName = (gcnew System::Windows::Forms::TextBox());
 			this->addCardButton = (gcnew System::Windows::Forms::Button());
-			this->powerRatingBox = (gcnew System::Windows::Forms::TextBox());
 			this->cardLabel = (gcnew System::Windows::Forms::Label());
 			this->ratingLabel = (gcnew System::Windows::Forms::Label());
 			this->typeLabel = (gcnew System::Windows::Forms::Label());
@@ -112,16 +124,20 @@ namespace DeckBuilder {
 			this->descriptionBox = (gcnew System::Windows::Forms::TextBox());
 			this->checkBox1 = (gcnew System::Windows::Forms::CheckBox());
 			this->deckName = (gcnew System::Windows::Forms::TextBox());
-			this->deleteDeck = (gcnew System::Windows::Forms::Button());
 			this->createDeck = (gcnew System::Windows::Forms::Button());
 			this->deckList = (gcnew System::Windows::Forms::ListBox());
 			this->deckLabel = (gcnew System::Windows::Forms::Label());
 			this->label4 = (gcnew System::Windows::Forms::Label());
+			this->deleteCard = (gcnew System::Windows::Forms::Button());
+			this->deleteDeck = (gcnew System::Windows::Forms::Button());
+			this->quantityLabel = (gcnew System::Windows::Forms::Label());
+			this->quantityBox = (gcnew System::Windows::Forms::TextBox());
+			this->powerRatingBox = (gcnew System::Windows::Forms::TextBox());
 			this->SuspendLayout();
 			// 
 			// cardName
 			// 
-			this->cardName->Location = System::Drawing::Point(433, 23);
+			this->cardName->Location = System::Drawing::Point(600, 21);
 			this->cardName->Name = L"cardName";
 			this->cardName->Size = System::Drawing::Size(109, 20);
 			this->cardName->TabIndex = 0;
@@ -129,7 +145,7 @@ namespace DeckBuilder {
 			// 
 			// addCardButton
 			// 
-			this->addCardButton->Location = System::Drawing::Point(528, 304);
+			this->addCardButton->Location = System::Drawing::Point(695, 302);
 			this->addCardButton->Name = L"addCardButton";
 			this->addCardButton->Size = System::Drawing::Size(75, 23);
 			this->addCardButton->TabIndex = 1;
@@ -137,18 +153,10 @@ namespace DeckBuilder {
 			this->addCardButton->UseVisualStyleBackColor = true;
 			this->addCardButton->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
 			// 
-			// powerRatingBox
-			// 
-			this->powerRatingBox->Location = System::Drawing::Point(433, 120);
-			this->powerRatingBox->Name = L"powerRatingBox";
-			this->powerRatingBox->Size = System::Drawing::Size(26, 20);
-			this->powerRatingBox->TabIndex = 0;
-			this->powerRatingBox->TextChanged += gcnew System::EventHandler(this, &MyForm::textBox1_TextChanged);
-			// 
 			// cardLabel
 			// 
 			this->cardLabel->AutoSize = true;
-			this->cardLabel->Location = System::Drawing::Point(352, 23);
+			this->cardLabel->Location = System::Drawing::Point(519, 21);
 			this->cardLabel->Name = L"cardLabel";
 			this->cardLabel->Size = System::Drawing::Size(52, 13);
 			this->cardLabel->TabIndex = 4;
@@ -158,7 +166,7 @@ namespace DeckBuilder {
 			// ratingLabel
 			// 
 			this->ratingLabel->AutoSize = true;
-			this->ratingLabel->Location = System::Drawing::Point(352, 120);
+			this->ratingLabel->Location = System::Drawing::Point(519, 118);
 			this->ratingLabel->Name = L"ratingLabel";
 			this->ratingLabel->Size = System::Drawing::Size(71, 13);
 			this->ratingLabel->TabIndex = 4;
@@ -168,7 +176,7 @@ namespace DeckBuilder {
 			// typeLabel
 			// 
 			this->typeLabel->AutoSize = true;
-			this->typeLabel->Location = System::Drawing::Point(352, 70);
+			this->typeLabel->Location = System::Drawing::Point(519, 68);
 			this->typeLabel->Name = L"typeLabel";
 			this->typeLabel->Size = System::Drawing::Size(56, 13);
 			this->typeLabel->TabIndex = 4;
@@ -178,7 +186,7 @@ namespace DeckBuilder {
 			// descriptionLabel
 			// 
 			this->descriptionLabel->AutoSize = true;
-			this->descriptionLabel->Location = System::Drawing::Point(352, 166);
+			this->descriptionLabel->Location = System::Drawing::Point(519, 164);
 			this->descriptionLabel->Name = L"descriptionLabel";
 			this->descriptionLabel->Size = System::Drawing::Size(60, 13);
 			this->descriptionLabel->TabIndex = 4;
@@ -188,7 +196,7 @@ namespace DeckBuilder {
 			// descriptionBox
 			// 
 			this->descriptionBox->AcceptsReturn = true;
-			this->descriptionBox->Location = System::Drawing::Point(433, 163);
+			this->descriptionBox->Location = System::Drawing::Point(600, 161);
 			this->descriptionBox->Multiline = true;
 			this->descriptionBox->Name = L"descriptionBox";
 			this->descriptionBox->Size = System::Drawing::Size(170, 130);
@@ -198,7 +206,7 @@ namespace DeckBuilder {
 			// checkBox1
 			// 
 			this->checkBox1->AutoSize = true;
-			this->checkBox1->Location = System::Drawing::Point(433, 70);
+			this->checkBox1->Location = System::Drawing::Point(600, 68);
 			this->checkBox1->Name = L"checkBox1";
 			this->checkBox1->Size = System::Drawing::Size(53, 17);
 			this->checkBox1->TabIndex = 6;
@@ -214,19 +222,9 @@ namespace DeckBuilder {
 			this->deckName->TabIndex = 0;
 			this->deckName->TextChanged += gcnew System::EventHandler(this, &MyForm::textBox1_TextChanged);
 			// 
-			// deleteDeck
-			// 
-			this->deleteDeck->Location = System::Drawing::Point(239, 304);
-			this->deleteDeck->Name = L"deleteDeck";
-			this->deleteDeck->Size = System::Drawing::Size(75, 23);
-			this->deleteDeck->TabIndex = 1;
-			this->deleteDeck->Text = L"Delete Card";
-			this->deleteDeck->UseVisualStyleBackColor = true;
-			this->deleteDeck->Click += gcnew System::EventHandler(this, &MyForm::button2_Click);
-			// 
 			// createDeck
 			// 
-			this->createDeck->Location = System::Drawing::Point(149, 304);
+			this->createDeck->Location = System::Drawing::Point(68, 301);
 			this->createDeck->Name = L"createDeck";
 			this->createDeck->Size = System::Drawing::Size(75, 23);
 			this->createDeck->TabIndex = 1;
@@ -238,10 +236,9 @@ namespace DeckBuilder {
 			// 
 			this->deckList->FormattingEnabled = true;
 			this->deckList->Location = System::Drawing::Point(68, 45);
-			this->deckList->MultiColumn = true;
 			this->deckList->Name = L"deckList";
 			this->deckList->ScrollAlwaysVisible = true;
-			this->deckList->Size = System::Drawing::Size(246, 238);
+			this->deckList->Size = System::Drawing::Size(398, 238);
 			this->deckList->TabIndex = 2;
 			this->deckList->SelectedIndexChanged += gcnew System::EventHandler(this, &MyForm::listBox1_SelectedIndexChanged_1);
 			// 
@@ -265,11 +262,60 @@ namespace DeckBuilder {
 			this->label4->Text = L"Card List";
 			this->label4->Click += gcnew System::EventHandler(this, &MyForm::label1_Click_1);
 			// 
+			// deleteCard
+			// 
+			this->deleteCard->Location = System::Drawing::Point(376, 302);
+			this->deleteCard->Name = L"deleteCard";
+			this->deleteCard->Size = System::Drawing::Size(75, 23);
+			this->deleteCard->TabIndex = 7;
+			this->deleteCard->Text = L"Delete Card";
+			this->deleteCard->UseVisualStyleBackColor = true;
+			this->deleteCard->Click += gcnew System::EventHandler(this, &MyForm::deleteCard_Click);
+			// 
+			// deleteDeck
+			// 
+			this->deleteDeck->Location = System::Drawing::Point(149, 301);
+			this->deleteDeck->Name = L"deleteDeck";
+			this->deleteDeck->Size = System::Drawing::Size(75, 23);
+			this->deleteDeck->TabIndex = 8;
+			this->deleteDeck->Text = L"Delete Deck";
+			this->deleteDeck->UseVisualStyleBackColor = true;
+			this->deleteDeck->Click += gcnew System::EventHandler(this, &MyForm::deleteDeck_Click);
+			// 
+			// quantityLabel
+			// 
+			this->quantityLabel->AutoSize = true;
+			this->quantityLabel->Location = System::Drawing::Point(555, 307);
+			this->quantityLabel->Name = L"quantityLabel";
+			this->quantityLabel->Size = System::Drawing::Size(46, 13);
+			this->quantityLabel->TabIndex = 9;
+			this->quantityLabel->Text = L"Quantity";
+			// 
+			// quantityBox
+			// 
+			this->quantityBox->Location = System::Drawing::Point(600, 303);
+			this->quantityBox->Name = L"quantityBox";
+			this->quantityBox->Size = System::Drawing::Size(26, 20);
+			this->quantityBox->TabIndex = 10;
+			this->quantityBox->Text = L"1";
+			// 
+			// powerRatingBox
+			// 
+			this->powerRatingBox->Location = System::Drawing::Point(600, 115);
+			this->powerRatingBox->Name = L"powerRatingBox";
+			this->powerRatingBox->Size = System::Drawing::Size(26, 20);
+			this->powerRatingBox->TabIndex = 11;
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(647, 350);
+			this->ClientSize = System::Drawing::Size(810, 350);
+			this->Controls->Add(this->powerRatingBox);
+			this->Controls->Add(this->quantityBox);
+			this->Controls->Add(this->quantityLabel);
+			this->Controls->Add(this->deleteDeck);
+			this->Controls->Add(this->deleteCard);
 			this->Controls->Add(this->checkBox1);
 			this->Controls->Add(this->typeLabel);
 			this->Controls->Add(this->descriptionLabel);
@@ -279,9 +325,7 @@ namespace DeckBuilder {
 			this->Controls->Add(this->cardLabel);
 			this->Controls->Add(this->deckList);
 			this->Controls->Add(this->createDeck);
-			this->Controls->Add(this->deleteDeck);
 			this->Controls->Add(this->addCardButton);
-			this->Controls->Add(this->powerRatingBox);
 			this->Controls->Add(this->deckName);
 			this->Controls->Add(this->descriptionBox);
 			this->Controls->Add(this->cardName);
@@ -298,22 +342,48 @@ namespace DeckBuilder {
 	private: Card* myCard = NULL;
 	
 	private: void updateDeckList() {
-		int index = myDeck->qty;
-		std::string stdDeckEntry;
+
+		Card currentCard;
 		System::String^ sysDeckEntry;
 
-		stdDeckEntry = "hello";
+		if (deckList->Items->Count != 0) {
+			deckList->Items->Clear();
+		}
 
-		stdToSystem(sysDeckEntry, stdDeckEntry);
+		if (myDeck != NULL) {
 
-		deckList->Items->Add(sysDeckEntry);
+			deckList->BeginUpdate();
+
+			for (int i = 0; i < myDeck->getQuantity(); i++) {
+				currentCard = myDeck->getCard(i);
+				sysDeckEntry = stdToSystem(currentCard.getTitle())
+					+ " | "
+					+ System::Convert::ToString(currentCard.getPowerRating())
+					+ " | ";
+
+				if (currentCard.isAbility()) {
+					sysDeckEntry += "Ability" + " | ";
+				}
+				else {
+					sysDeckEntry += "Fieldable" + " | ";
+				}
+
+				sysDeckEntry += stdToSystem(currentCard.getDescription());
+
+				deckList->Items->Add(sysDeckEntry);
+			}
+
+			deckList->EndUpdate();
+
+		}
+
 	}
 	
 	private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 		std::string deckTitle;
 
 		if (myDeck != NULL) {
-			stdToSystem(deckName->Text, deckTitle);
+			systemToStd(deckName->Text, deckTitle);
 			myDeck->setTitle(deckTitle);
 		}
 	
@@ -332,50 +402,51 @@ namespace DeckBuilder {
 		std::string cardTitle, cardDescription;
 		bool abilityCard;
 		int powerRating;
+		int quantityToAdd = System::Convert::ToInt16(quantityBox->Text);
 
-		if (cardName->Text == "") {
-			cardTitle == "Card Name";
-		}
-		else {
-			systemToStd(cardName->Text, cardTitle);
-		}
+		if(myDeck != NULL) {
+
+			if (cardName->Text == "") {
+				cardTitle = "Card Name";
+			}
+			else {
+				systemToStd(cardName->Text, cardTitle);
+			}
 		
-		if (cardDescription == "") {
-			cardDescription = "Description";
-		}
-		else {
-			systemToStd(descriptionBox->Text, cardDescription);
-		}
+			if (descriptionBox->Text == "") {
+				cardDescription = "Description";
+			}
+			else {
+				systemToStd(descriptionBox->Text, cardDescription);
+			}
 		
-		if (checkBox1->Checked) {
-			abilityCard = true;
-			powerRating = 0;
-		}
-		else {
-			abilityCard = false;
-			if (powerRatingBox->Text == "") {
+			if (checkBox1->Checked) {
+				abilityCard = true;
 				powerRating = 0;
 			}
 			else {
-				powerRating = System::Convert::ToInt16(powerRatingBox->Text);
+				abilityCard = false;
+				if (powerRatingBox->Text == "") {
+					powerRating = 0;
+				}
+				else {
+					powerRating = System::Convert::ToInt16(powerRatingBox->Text);
+				}
 			}
-		}
 
-		if (myCard != NULL) {
-			delete myCard;
-			myCard = NULL;
-		}
+			if (myCard != NULL) {
+				delete myCard;
+				myCard = NULL;
+			}
 
-		myCard = new Card(cardTitle, cardDescription, abilityCard, powerRating);
+			myCard = new Card(cardTitle, cardDescription, abilityCard, powerRating);
 
-		
-		if (myDeck != NULL) {
-			myDeck->addCard(myCard);
+			for (int i = 0; i < quantityToAdd; i++) {
+				myDeck->addCard(myCard);
+			}
+
 			updateDeckList();
-		}
-		
-
-		
+		}	
 		
 	}
 	private: System::Void label1_Click_1(System::Object^ sender, System::EventArgs^ e) {
@@ -384,7 +455,7 @@ namespace DeckBuilder {
 
 		if (myDeck == NULL) {
 			myDeck = new Deck();
-			systemToStd(deckName->Text, myDeck->title);
+			deckName->Text = stdToSystem(myDeck->getTitle());
 		}
 	}
 	private: System::Void listBox2_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
@@ -392,5 +463,19 @@ namespace DeckBuilder {
 	private: System::Void checkBox1_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
 	}
 
+	private: System::Void deleteCard_Click(System::Object^ sender, System::EventArgs^ e) {
+
+		myDeck->deleteCard();
+
+		updateDeckList();
+	}
+	private: System::Void deleteDeck_Click(System::Object^ sender, System::EventArgs^ e) {
+
+		delete myDeck;
+		myDeck = NULL;
+		deckName->Text = "";
+
+		updateDeckList();
+	}
 };
 }

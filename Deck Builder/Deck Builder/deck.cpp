@@ -12,15 +12,18 @@ void Deck::setTitle(string x) {
 }
 
 void Deck::addCard(Card* newCard) {
-	cards[qty] = *newCard;
-	qty++;
+
+	if (qty <= max_deck_size) {
+		cards[qty] = *(newCard);
+		qty++;
+	}
 }
 
 void Deck::deleteCard() {
 	qty--;
 }
 
-string Deck::getTitle(string x) {
+string Deck::getTitle() {
 	return title;
 }
 
@@ -28,3 +31,14 @@ Card Deck::getCard(int index) {
 	return cards[index];
 }
 
+Card Deck::getLastCard() {
+	int index = getLastCardIndex();
+	return cards[index];
+}
+int Deck::getQuantity() {
+	return qty;
+}
+
+int Deck::getLastCardIndex() {
+	return *(lastCard) - 1;
+}

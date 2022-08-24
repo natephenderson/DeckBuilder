@@ -9,4 +9,4 @@ void systemToStd(System::String^ s, std::string& os);
 
 void systemToStd(System::String^ s, std::wstring& os);
 
-void stdToSystem(System::String^ s, std::string& os);
+System::String^ stdToSystem( std::string& os);

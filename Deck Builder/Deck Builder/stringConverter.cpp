@@ -19,6 +19,7 @@ void systemToStd(String^ s, wstring& os) {
     Marshal::FreeHGlobal(IntPtr((void*)chars));
 }
 
-void stdToSystem(String^ s, string& os) {
-    s = gcnew String(os.c_str());
+String^ stdToSystem(string& os) {
+    String^ s = gcnew String(os.data());
+    return s;
 }

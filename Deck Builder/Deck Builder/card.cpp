@@ -7,14 +7,27 @@ Card::Card() {}
 Card::Card(string myTitle, string myDescription, bool myType) {
 	title = myTitle;
 	description = myDescription;
-	isAbility = myType;
+	ability = myType;
 }
 
 Card::Card(string myTitle, string myDescription, bool myType, int rating) {
 	title = myTitle;
 	description = myDescription;
-	isAbility = myType;
+	ability = myType;
 	powerRating = rating;
+
+	switch (powerRating) {
+		case POWER_1:
+			break;
+		case POWER_2:
+			break;
+		case POWER_3:
+			break;
+		case POWER_4:
+			break;
+		case POWER_5:
+			break;
+	}
 }
 
 void Card::setTitle(string x) {
@@ -26,7 +39,7 @@ void Card::setDescription(string x) {
 }
 
 void Card::setType(bool x) {
-	isAbility = x;
+	ability = x;
 }
 
 string Card::getTitle() {
@@ -39,4 +52,8 @@ string Card::getDescription() {
 
 int Card::getPowerRating() {
 	return powerRating;
+}
+
+bool Card::isAbility() {
+	return ability;
 }
